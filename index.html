@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kennedy, Be My Valentine ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Georgia', serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 32px;
+      border-radius: 22px;
+      text-align: center;
+      width: 380px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: #444;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-top: 18px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 25px;
+      font-size: 15px;
+      cursor: pointer;
+      margin: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #yes {
+      background: #2c3e50;
+      color: white;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 5px #2c3e50; }
+      to { box-shadow: 0 0 20px #66a6ff; }
+    }
+
+    #no {
+      background: #eee;
+      position: absolute;
+      top: 240px;  
+      left: 140px; 
+    }
+
+    #message {
+      display: none;
+      margin-top: 20px;
+      animation: pop 0.6s ease-out;
+      color: #2c3e50;
+      font-weight: bold;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .plane {
+      position: absolute;
+      font-size: 20px;
+      animation: fly 8s linear infinite;
+    }
+
+    @keyframes fly {
+      0% { transform: translateX(-10vw) translateY(60vh); opacity: 1; }
+      100% { transform: translateX(110vw) translateY(10vh); opacity: 0; }
+    }
+
+    @media screen and (max-width: 400px) {
+      .card {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hey Kennedy ✈️</h1>
+
+    <p>
+      I really admire a woman who’s figuring out life,  
+      flying airplanes, and building something meaningful  
+      at the same time.
+    </p>
+
+    <p>
+      Independent. Driven. Steady.  
+      The kind of energy that doesn’t need to be loud  
+      to be powerful.
+    </p>
+
+    <p>
+      I’d love good conversations that last for hours,  
+      quiet confidence across a table at an airport café,  
+      sharing books, ideas, dreams —  
+      and building something genuine that feels steady.
+    </p>
+
+    <p>
+      Maybe it starts with aviation stories ✈️,  
+      turns into shared vacations 🌍,  
+      deep talks about what we’re learning 📚,  
+      and becomes something that just feels right.
+    </p>
+
+    <h2>Kennedy, will you be my Valentine? 💙</h2>
+
+    <button id="yes" onclick="sayYes()">Yes 💫</button>
+    <button id="no" onmouseenter="moveNo()" onclick="noClicked()">No 🙈</button>
+
+    <div id="message">
+      That feels like a smooth takeoff, Kennedy 😌✈️ <br><br>
+      Let’s build something steady, genuine,  
+      and a little adventurous too.
+    </div>
+  </div>
+
+  <script>
+    const no = document.getElementById('no');
+    const card = document.querySelector('.card');
+    const messages = [
+      "Easy there, pilot 😌",
+      "That doesn’t sound very steady 😉",
+      "Try again ✈️",
+      "You know this feels right 💙",
+      "Don’t make me file a flight plan 😄"
+    ];
+
+    function moveNo() {
+      no.textContent = messages[Math.floor(Math.random() * messages.length)];
+
+      const cardWidth = card.clientWidth - no.offsetWidth;
+      const cardHeight = card.clientHeight - no.offsetHeight;
+      const x = Math.random() * cardWidth;
+      const y = Math.random() * cardHeight;
+
+      no.style.left = x + "px";
+      no.style.top = y + "px";
+    }
+
+    function noClicked() {
+      alert("Even strong pilots need a co-pilot 😄");
+    }
+
+    function sayYes() {
+      document.getElementById("message").style.display = "block";
+      document.getElementById("yes").style.display = "none";
+      document.getElementById("no").style.display = "none";
+    }
+
+    setInterval(() => {
+      const plane = document.createElement("div");
+      plane.className = "plane";
+      plane.innerHTML = "✈️";
+      document.body.appendChild(plane);
+      setTimeout(() => plane.remove(), 8000);
+    }, 3000);
+  </script>
+
+</body>
+</html>
